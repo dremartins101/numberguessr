@@ -16,19 +16,38 @@ int main(){
 	srand(time(NULL));
 	correct = (rand() % 100) + 1;
 
-	printf("Correct: %d \n", correct); //debug
+	//printf("Correct: %d \n", correct); //debug
 
 	printf("Hi. What is your name? ");
 	scanf("%s", userName);
 
 	printf("Nice to meet you %s. Let's play a game. \n", userName);
 	
-	while (keepGoing = TRUE){
+	while (keepGoing == TRUE){
 		turns++;
-		printf("Please guess a number: ");
+		printf("Turn %d Please guess a number: ", turns);
 		scanf("%d", &guess);
-		printf("You said %d \n", guess); //debug
-		keepGoing = FALSE;
+		//printf("You said %d \n", guess); //debug
+		
+		if (guess < correct){
+			printf("Too low. \n");
+		} else if (guess > correct){
+			printf("Too high. \n");
+		} else if (guess == correct) {
+			printf("You GOT IT! \n");
+			keepGoing = FALSE;
+		}
+
+	if (keepGoing == FALSE){
+
+		if (turns < 7){
+			printf("Great job!");
+		} else if (turns > 7){
+			printf("You could do better.");
+		} else {
+			printf("You did alright. I guess.");
+		}
+	} // end of turns dialogue
 	} // end of while
 
 		
